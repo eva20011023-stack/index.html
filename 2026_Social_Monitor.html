@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 縣市首長參選人社群監測</title>
+    <style>
+        body { font-family: "Microsoft JhengHei", sans-serif; background-color: #f0f2f5; padding: 20px; color: #333; }
+        .container { max-width: 950px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #1a73e8; margin-bottom: 25px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th { background-color: #e8f0fe; color: #1967d2; padding: 15px; text-align: left; border-bottom: 2px solid #aecbfa; }
+        td { padding: 12px 15px; border-bottom: 1px solid #eee; }
+        tr:hover { background-color: #f8f9fa; }
+        .city-tag { background: #607d8b; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.85em; margin-right: 5px; }
+        .btn { display: inline-block; padding: 6px 15px; margin-right: 5px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 0.9em; transition: 0.3s; }
+        .fb { background-color: #1877F2; color: white; }
+        .fb:hover { background-color: #145dbf; }
+        .threads { background-color: #000000; color: white; }
+        .threads:hover { background-color: #333; }
+        .new-label { color: #d93025; font-weight: bold; font-size: 0.8em; margin-left: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>2026 縣市首長參選人社群清單</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>縣市區域</th>
+                <th>參選人</th>
+                <th>社群連結 (新分頁開啟)</th>
+            </tr>
+        </thead>
+        <tbody id="list-body">
+            </tbody>
+    </table>
+</div>
+
+<script>
+    const candidates = [
+        { city: "宜蘭", name: "林國漳", new: true, fb: "https://www.facebook.com/linkuochang.yilan", threads: "https://www.threads.com/@lin.kuo.chang" },
+        { city: "新北", name: "蘇巧慧", new: true, fb: "https://www.facebook.com/chiaohui.su", threads: "https://www.threads.com/@su.chiaohui" },
+        { city: "基隆", name: "童子瑋", new: true, fb: "https://www.facebook.com/wayne201817", threads: "https://www.threads.com/@tungtung_keelung" },
+        { city: "苗栗", name: "陳品安", new: true, fb: "https://www.facebook.com/pinanchen064", threads: "https://www.threads.com/@vote4pinan" },
+        { city: "台中", name: "何欣純", new: true, fb: "https://www.facebook.com/94achun", threads: "https://www.threads.com/@a_chun1973" },
+        { city: "彰化", name: "陳素月", new: true, fb: "https://www.facebook.com/chengSayYes", threads: "https://www.threads.com/@sayyessayhi" },
+        { city: "南投", name: "温世政", new: true, fb: "https://www.facebook.com/profile.php?id=61586047984762", threads: "https://www.threads.com/@wen_shih_cheng" },
+        { city: "雲林", name: "劉建國", new: true, fb: "https://www.facebook.com/liucnko.fans", threads: "https://www.threads.com/@liu.cn.ko" },
+        { city: "嘉義縣", name: "蔡易餘", new: true, fb: "https://www.facebook.com/chiayionefish/?locale=zh_TW", threads: "https://www.threads.com/@chiayionefish" },
+        { city: "嘉義市", name: "王美惠", new: true, fb: "https://www.facebook.com/ahueimoto", threads: "https://www.threads.com/@ahueimoto" },
+        { city: "台南", name: "陳亭妃", new: true, fb: "https://www.facebook.com/fififans/?locale=zh_TW", threads: "https://www.threads.com/@chen_tingfei" },
+        { city: "高雄", name: "賴瑞隆", new: true, fb: "https://www.facebook.com/zenolai2/?locale=zh_TW", threads: "https://www.threads.com/@zenolai?hl=zh-tw" },
+        { city: "屏東", name: "周春米", new: false, fb: "https://www.facebook.com/RiceChouChunMi/?locale=zh_TW", threads: "https://www.threads.com/@choulittlerice" },
+        { city: "台東", name: "陳瑩", new: true, fb: "https://www.facebook.com/11YIG", threads: "https://www.threads.com/@asenayig" },
+        { city: "澎湖", name: "陳光復", new: false, fb: "https://www.facebook.com/chenkuangfu1025/?locale=zh_TW", threads: "https://www.threads.com/@chen_kuang_fu" }
+    ];
+
+    const tbody = document.getElementById('list-body');
+
+    candidates.forEach(person => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td><span class="city-tag">${person.city}</span> ${person.new ? '<span class="new-label">(NEW)</span>' : ''}</td>
+            <td><strong>${person.name}</strong></td>
+            <td>
+                <a href="${person.fb}" target="_blank" class="btn fb">FB 粉專</a>
+                <a href="${person.threads}" target="_blank" class="btn threads">Threads</a>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+</script>
+
+</body>
+</html>
